@@ -363,4 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # DB Connection Strings
-.config
+*.config
