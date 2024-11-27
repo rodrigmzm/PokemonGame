@@ -18,3 +18,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Custom Properties - poke 445 */
+
+:root {
+    --primary: #3B4CCA;
+    --secondary: #313131;
+    --white: #FFF;
+    --black: #000;
+    --background: #5A62AC;
+}
+
+.nav-bar {
+    background-color: var(--primary);
+}
+
+/*Page content*/
+
