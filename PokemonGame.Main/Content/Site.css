@@ -19,11 +19,11 @@ textarea {
     max-width: 280px;
 }
 
-/*Custom Properties - poke 445 */
+/*Custom Properties*/
 
 :root {
-    --primary: #3B4CCA;
-    --secondary: #313131;
+    --primary: #CC0000;
+    --secondary: #3b3561;
     --white: #FFF;
     --black: #000;
     --background: #5A62AC;
@@ -33,5 +33,26 @@ textarea {
     background-color: var(--primary);
 }
 
-/*Page content*/
+/*Buttons*/
+.btn-submit {
+    background-color: var(--secondary);
+    color: white;
+    --bs-btn-hover-color: white;
+    --bs-btn-hover-bg: #201D34;
+    --bs-btn-hover-border-color: #201D34;
+    ;
+}
+
+/*Trainer view*/
+/* Create two unequal columns that floats next to each other */
+
+.column-left {
+    width: 40%;
+}
+
+.column-right {
+    width: 60%;
+}
+
+
 

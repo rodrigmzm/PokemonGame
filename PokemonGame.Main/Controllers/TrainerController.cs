@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace PokemonGame.Main.Controllers
 {
-    public class HomeController : Controller
+    public class TrainerController : Controller
     {
         public ActionResult Index()
         {

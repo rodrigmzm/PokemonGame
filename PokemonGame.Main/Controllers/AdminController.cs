@@ -10,7 +10,7 @@ using PokemonGame.Data;
 
 namespace PokemonGame.Main.Controllers
 {
-    public class UsersController : Controller
+    public class AdminController : Controller
     {
         private PokemonBDEntities db = new PokemonBDEntities();
 
