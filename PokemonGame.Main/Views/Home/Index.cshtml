@@ -9,16 +9,27 @@
             <div class="col text-center">
                 <h1>Welcome to PokéCenter</h1>
                 <p>Build your own Pokémon team and challenge others</p>
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger text-center">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <p>@error.ErrorMessage</p>
+                        }
+                    </div>
+                }
             </div>
 
             <div class="card mx-auto w-50 p-4">
-                <form action="" method="post">
+                <form action="@Url.Action("Login","Home")" method="post">
+                    @Html.AntiForgeryToken()
                     <div class="mt-4 d-flex justify-content-center">
                         <input type="email" class="form-control text-center" id="email" name='email' aria-describedby="emailHelp"
                                placeholder="Email" required>
                     </div>
                     <div class="mt-4 mb-4 d-flex justify-content-center">
-                        <input type="password" class="form-control text-center" id="clave" name='clave' placeholder="Password" required>
+                        <input type="password" class="form-control text-center" id="password" name='password' placeholder="Password" required>
                     </div>
                     <div class=text-center>
                         <button type="submit" class="btn btn-submit mb-1 w-50 fw-bold">Log in</button>
@@ -27,11 +38,45 @@
                     <hr class="hr" />
                 </form>
 
+
                 <div class="text-center">
                     <p>New user?</p>
-                    <a href="" class="btn btn-outline-secondary mb-1 w-50 fw-bold">Sign up</a>
+                    <a class="btn btn-outline-secondary mb-1 w-50 fw-bold" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
                 </div>
 
+                <!-- Modal -->
+                <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header nav-bar text-white">
+                                <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                <div class="justify-content-center">
+                                    <div class="mt-4 d-flex justify-content-center">
+                                        <input type="text" class="form-control text-center" name="name" placeholder="Name" required />
+                                    </div>
+                                    <div class="mt-4 mb-4 d-flex justify-content-center">
+                                        <input type="email" class="form-control text-center" name="email" placeholder="Email" required />
+                                    </div>
+                                    <div class="mt-4 mb-4 d-flex justify-content-center">
+                                        <input type="password"  class="form-control text-center" name="password" placeholder="Password" required />
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-submit" type="submit">Registrar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
             </div>
         </div>
     </div>

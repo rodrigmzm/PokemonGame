@@ -14,14 +14,14 @@ namespace PokemonGame.Main.Controllers
     {
         private PokemonBDEntities db = new PokemonBDEntities();
 
-        // GET: Users
+        // GET: Admin
         public ActionResult Index()
         {
             var users = db.Users.Include(u => u.Role);
             return View(users.ToList());
         }
 
-        // GET: Users/Details/5
+        // GET: Admin/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,19 +36,19 @@ namespace PokemonGame.Main.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
+        // GET: Admin/Create
         public ActionResult Create()
         {
             ViewBag.IdRol = new SelectList(db.Roles, "IdRol", "Description");
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Admin/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,Name,Password,IdRol")] User user)
+        public ActionResult Create([Bind(Include = "UserId,Name,Email,Password,IdRol")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace PokemonGame.Main.Controllers
             return View(user);
         }
 
-        // GET: Users/Edit/5
+        // GET: Admin/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,12 +77,12 @@ namespace PokemonGame.Main.Controllers
             return View(user);
         }
 
-        // POST: Users/Edit/5
+        // POST: Admin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,Name,Password,IdRol")] User user)
+        public ActionResult Edit([Bind(Include = "UserId,Name,Email,Password,IdRol")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace PokemonGame.Main.Controllers
             return View(user);
         }
 
-        // GET: Users/Delete/5
+        // GET: Admin/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +109,7 @@ namespace PokemonGame.Main.Controllers
             return View(user);
         }
 
-        // POST: Users/Delete/5
+        // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

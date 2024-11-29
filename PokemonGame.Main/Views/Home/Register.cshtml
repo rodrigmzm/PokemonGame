@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+<main>
+    <h2>Register</h2>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <label>Nombre:</label>
+            <input type="text" name="name" required />
+        </div>
+        <div>
+            <label>Correo:</label>
+            <input type="email" name="email" required />
+        </div>
+        <div>
+            <label>Contraseña:</label>
+            <input type="password" name="password" required />
+        </div>
+        <button class="btn btn-submit" type="submit">Registrar</button>
+    }
+</main>
