@@ -8,6 +8,7 @@ namespace PokemonGame.Main.Controllers
 {
     public class TrainerController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             return View();

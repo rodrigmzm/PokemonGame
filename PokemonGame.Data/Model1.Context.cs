@@ -31,7 +31,6 @@ namespace PokemonGame.Data
         public virtual DbSet<NurseRequest> NurseRequests { get; set; }
         public virtual DbSet<Pokemon> Pokemons { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<User> Users { get; set; }

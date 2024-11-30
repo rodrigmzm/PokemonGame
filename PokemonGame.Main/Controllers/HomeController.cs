@@ -1,5 +1,6 @@
 ﻿using PokemonGame.Architecture.Helpers;
 using PokemonGame.Data;
+using PokemonGame.Main.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,47 +28,48 @@ namespace PokemonGame.Main.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(string name, string email, string password)
+        public ActionResult Register(User user)
         {
-            if (_db.Users.Any(u => u.Email == email))
+           if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Email already register");
-                return View();
-            }
-
-            var hashedPassword = PasswordHelper.HashPassword(password);
-            var newUser = new User
-            {
-                Name = name,
-                Email = email,
-                Password = hashedPassword,
-                IdRol = 2
-            };
-
-            _db.Users.Add(newUser);
-            _db.SaveChanges();
-
-            return RedirectToAction("Index");
+                if(_db.Users.Any(x => x.Email == user.Email)) 
+                {
+                    ModelState.AddModelError("", "Email already register");
+                    return View();
+                }
+                else
+                {
+                    user.IdRol = 2;
+                    _db.Users.Add(user);
+                    _db.SaveChanges();
+                }
+           }
+           return View("Index");
         }
 
         //Login
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(string email, string password)
+        public ActionResult Login(UserViewModel user)
         {
-            var user = _db.Users.FirstOrDefault(u => u.Email == email);
-            if (user == null || !PasswordHelper.VerifyPassword(password, user.Password))
+            var query = _db.Users.SingleOrDefault(m => m.Email == user.Email && m.Password == user.Password);
+            var role = _db.Users;
+
+            if (query != null)
             {
-                ModelState.AddModelError("", "Incorrect email or password.");
+                return View("~/Views/Trainer/Index.cshtml");
+            }
+            else
+            {
+                ModelState.AddModelError("", "The email or password are incorrect");
                 return View("Index");
             }
-
-            Session["UserId"] = user.UserId;
-            Session["UserName"] = user.Email;
-
-            if (user.IdRol == 1) return RedirectToAction("Index", "Admin");
-            else if (user.IdRol == 2) return RedirectToAction("Index", "Trainer");
-            else return RedirectToAction("Index", "Nurse");
         }  
         
         //Logout
