@@ -1,33 +1,96 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model PokemonGame.Data.User
+@{
+    ViewBag.Title = "Home";
 }
 
 <main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+    <div class="container">
+        <div class="row align-items-start">
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+            <div class="col text-center">
+                <h1>Welcome to PokéCenter</h1>
+                <p>Build your own Pokémon team and challenge others</p>
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger text-center">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <p>@error.ErrorMessage</p>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="card mx-auto w-50 p-4">
+                <form action="@Url.Action("Login","Home")" method="post">
+                    @Html.AntiForgeryToken()
+                    @Html.LabelFor(m => m.Email, new { @class = " d-flex justify-content-center" })
+                    <div class="mt-4 d-flex justify-content-center">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        @*<input type="email" class="form-control text-center" id="email" name='email' aria-describedby="emailHelp" placeholder="Email" required>*@
+
+                    </div>
+                    @Html.LabelFor(m => m.Password, new { @class = " d-flex justify-content-center" })
+                    <div class="mt-4 mb-4 d-flex justify-content-center">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        @*<input type="password" class="form-control text-center" id="password" name='password' placeholder="Password" required>*@
+                    </div>
+                    <div class=text-center>
+                        <button type="submit" class="btn btn-submit mb-1 w-50 fw-bold">Log in</button>
+                    </div>
+                    <div class="text-center link-color"><a href="#">Forgot password?</a></div>
+                    <hr class="hr" />
+                </form>
+
+
+                <div class="text-center">
+                    <p>New user?</p>
+                    <a class="btn btn-outline-secondary mb-1 w-50 fw-bold" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header nav-bar text-white">
+                                <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                <div class="justify-content-center">
+                                    @Html.LabelFor(m => m.Name, new { @class = " d-flex justify-content-center" })
+                                    <div class="mt-4 d-flex justify-content-center">
+                                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control text-center" })
+                                        @*<input type="text" class="form-control text-center" name="name" placeholder="Name" required />*@
+                                    </div>
+                                    @Html.LabelFor(m => m.Email, new { @class = " d-flex justify-content-center" })
+                                    <div class="mb-4 d-flex justify-content-center">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control text-center" })
+                                        @*<input type="email" class="form-control text-center" name="email" placeholder="Email" required />*@
+                                    </div>
+                                    @Html.LabelFor(m => m.Password, new { @class = " d-flex justify-content-center" })
+                                    <div class="mb-4 d-flex justify-content-center">
+                                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control text-center" })
+                                        @*<input type="password" class="form-control text-center" name="password" placeholder="Password" required />*@
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-submit" type="submit">Registrar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+            </div>
+        </div>
     </div>
 </main>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonGame.Main", "Pokemon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonGame.Data", "PokemonGame.Data\PokemonGame.Data.csproj", "{214933B6-2871-48AF-9D9F-B7A3C6BDADE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonGame.Architecture", "PokemonGame.Architecture\PokemonGame.Architecture.csproj", "{1FFB1E3E-5BD5-4FAD-A405-847A96C8FEF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{214933B6-2871-48AF-9D9F-B7A3C6BDADE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214933B6-2871-48AF-9D9F-B7A3C6BDADE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214933B6-2871-48AF-9D9F-B7A3C6BDADE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FFB1E3E-5BD5-4FAD-A405-847A96C8FEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FFB1E3E-5BD5-4FAD-A405-847A96C8FEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FFB1E3E-5BD5-4FAD-A405-847A96C8FEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FFB1E3E-5BD5-4FAD-A405-847A96C8FEF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
