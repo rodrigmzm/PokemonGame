@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PokemonBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PokemonBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Attacks">
           <Key>
             <PropertyRef Name="AttackId" />
@@ -117,6 +117,7 @@ warning 6002: The table/view 'PokemonBD.dbo.PokemonAttaks' does not have a prima
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar(max)" Nullable="false" />
           <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="Salt" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK_Attacks_Types">
           <End Role="Types" Type="Self.Types" Multiplicity="1" />
@@ -416,8 +417,7 @@ warning 6002: The table/view 'PokemonBD.dbo.PokemonAttaks' does not have a prima
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PokemonBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -538,6 +538,7 @@ warning 6002: The table/view 'PokemonBD.dbo.PokemonAttaks' does not have a prima
           <NavigationProperty Name="NurseRequests" Relationship="Self.FK_NurseRequests_Users" FromRole="Users" ToRole="NurseRequests" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
           <NavigationProperty Name="Teams" Relationship="Self.FK_Teams_Users" FromRole="Users" ToRole="Teams" />
+          <Property Name="Salt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Pokedex">
           <Key>
@@ -908,6 +909,7 @@ warning 6002: The table/view 'PokemonBD.dbo.PokemonAttaks' does not have a prima
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="PokemonBDModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

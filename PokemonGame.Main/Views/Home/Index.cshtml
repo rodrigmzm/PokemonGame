@@ -29,14 +29,12 @@
                     <div class="mt-4 d-flex justify-content-center">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        @*<input type="email" class="form-control text-center" id="email" name='email' aria-describedby="emailHelp" placeholder="Email" required>*@
 
                     </div>
                     @Html.LabelFor(m => m.Password, new { @class = " d-flex justify-content-center" })
                     <div class="mt-4 mb-4 d-flex justify-content-center">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        @*<input type="password" class="form-control text-center" id="password" name='password' placeholder="Password" required>*@
                     </div>
                     <div class=text-center>
                         <button type="submit" class="btn btn-submit mb-1 w-50 fw-bold">Log in</button>
@@ -67,17 +65,14 @@
                                     @Html.LabelFor(m => m.Name, new { @class = " d-flex justify-content-center" })
                                     <div class="mt-4 d-flex justify-content-center">
                                         @Html.TextBoxFor(m => m.Name, new { @class = "form-control text-center" })
-                                        @*<input type="text" class="form-control text-center" name="name" placeholder="Name" required />*@
                                     </div>
                                     @Html.LabelFor(m => m.Email, new { @class = " d-flex justify-content-center" })
                                     <div class="mb-4 d-flex justify-content-center">
                                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control text-center" })
-                                        @*<input type="email" class="form-control text-center" name="email" placeholder="Email" required />*@
                                     </div>
                                     @Html.LabelFor(m => m.Password, new { @class = " d-flex justify-content-center" })
                                     <div class="mb-4 d-flex justify-content-center">
-                                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control text-center" })
-                                        @*<input type="password" class="form-control text-center" name="password" placeholder="Password" required />*@
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control text-center" })
                                     </div>
                                     <div class="text-center">
                                         <button class="btn btn-submit" type="submit">Registrar</button>
