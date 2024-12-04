@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5b462d07d0e745b2b4fc941067f3a51f" Name="Diagram1">
+      <Diagram DiagramId="7c42f3a2f07841b0a4ceb1308eac9f01" Name="Diagram1" ZoomLevel="73">
         <EntityTypeShape EntityType="PokemonBDModel.Attack" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PokemonBDModel.Challenge" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PokemonBDModel.Message" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />

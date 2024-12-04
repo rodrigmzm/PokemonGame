@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PokemonGame.Data.Team
+@{
     ViewBag.Title = "Trainer";
 }
 
@@ -8,6 +9,7 @@
 
             <div class="col text-center mt-3 mb-3">
                 <div class="row">
+
                     <div class="column column-left">
                         <div class="card mb-3">
                             <h1>Challenges</h1>
@@ -19,9 +21,42 @@
 
                     <div class="column card column-right">
                         <h1>Your team</h1>
+                        <div class="">
+                            <table class="table table-striped table-borderless">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">Pokemon #1</th>
+                                        <th scope="col">Pokemon #2</th>
+                                        <th scope="col">Pokemon #3</th>
+                                        <th scope="col">Pokemon #4</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Pokemon.Name)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(model => model.Pokemon1.Name)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(model => model.Pokemon2.Name)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(model => model.Pokemon3.Name)
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
                         <div class="col">
-                            <button class="btn btn-submit">Edit team</button>
-                            <button class="btn btn-submit">Nurse Request</button>
+                            <button class="btn btn-submit mb-3">Edit team</button>
+                            <button class="btn btn-submit mb-3">Nurse Request</button>
                         </div>
                     </div>
                 </div>
