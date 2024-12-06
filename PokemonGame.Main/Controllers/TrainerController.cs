@@ -34,7 +34,8 @@ namespace PokemonGame.Main.Controllers
         }
 
         public ActionResult CreateTeam(int id)
-        { 
+        {
+            
 
             return View();
         }
