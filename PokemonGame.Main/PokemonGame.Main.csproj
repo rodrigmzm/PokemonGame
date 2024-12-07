@@ -187,6 +187,7 @@
     <Content Include="Views\Trainer\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Trainer\_TeamPartial.cshtml" />
+    <Content Include="Views\Home\Pokedex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

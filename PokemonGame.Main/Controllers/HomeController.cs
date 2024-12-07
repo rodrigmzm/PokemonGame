@@ -20,6 +20,11 @@ namespace PokemonGame.Main.Controllers
             return View();
         }
 
+        public ActionResult Pokedex()
+        {
+            return View();
+        }
+
         //Register
         //[HttpGet]
         //public ActionResult Register() 

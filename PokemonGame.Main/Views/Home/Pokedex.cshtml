@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Pokédex";
+
+
+}
+
+<style>
+            .pokedex-body {
+                margin: 0;
+                padding: 20px;
+                border-radius: 20px;
+                background-color: #f3f4f6;
+                color: #333;
+            }
+
+            .pokedex-title {
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .pokemon-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+                padding: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .pokemon-card {
+                text-align: center;
+                padding: 10px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+                .pokemon-card img {
+                    max-width: 100px;
+                    height: auto;
+                    margin-bottom: 10px;
+                }
+
+            .load-more {
+                display: block;
+                margin: 20px auto;
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .load-more:hover {
+                    background-color: #0056b3;
+                }
+        </style>
+    <div class="pokedex-body">
+        <h1 class="pokedex-title">Pokémon List</h1>
+        <div class="pokemon-list" id="pokemonList"></div>
+        <button class="load-more" id="loadMoreButton">Load More Pokémon</button>
+
+        <script>
+            const apiUrl = "https://pokeapi.co/api/v2/pokemon";
+            const pokemonList = document.getElementById("pokemonList");
+            const loadMoreButton = document.getElementById("loadMoreButton");
+
+            let offset = 0;
+            const limit = 20;
+
+            async function fetchPokemon() {
+                try {
+                    const response = await fetch(`${apiUrl}?offset=${offset}&limit=${limit}`);
+                    const data = await response.json();
+                    displayPokemon(data.results);
+                    offset += limit;
+                } catch (error) {
+                    console.error("Error fetching Pokémon data:", error);
+                }
+            }
+
+            function displayPokemon(pokemons) {
+                pokemons.forEach(pokemon => {
+                    const pokemonCard = document.createElement("div");
+                    pokemonCard.classList.add("pokemon-card");
+
+                    const pokemonId = pokemon.url.split("/").slice(-2, -1)[0];
+                    pokemonCard.innerHTML = `
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png" alt="${pokemon.name}">
+                            <p>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
+                        `;
+                    pokemonList.appendChild(pokemonCard);
+                });
+            }
+
+            loadMoreButton.addEventListener("click", fetchPokemon);
+
+            fetchPokemon();
+        </script>
+    </div>
