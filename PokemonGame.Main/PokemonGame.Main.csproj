@@ -127,7 +127,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TrainerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -187,14 +186,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Trainer\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
-    <Content Include="Views\Admin\Delete.cshtml" />
-    <Content Include="Views\Admin\Details.cshtml" />
-    <Content Include="Views\Admin\Edit.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Trainer\_TeamPartial.cshtml" />
+    <Content Include="Views\Home\Pokedex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Nurse\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -231,6 +228,10 @@
     <ProjectReference Include="..\PokemonGame.Data\PokemonGame.Data.csproj">
       <Project>{214933b6-2871-48af-9d9f-b7a3c6bdade0}</Project>
       <Name>PokemonGame.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonGame.Repository\PokemonGame.Repository.csproj">
+      <Project>{8fc7e8a3-4e67-4c26-a20a-6b62394524f1}</Project>
+      <Name>PokemonGame.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

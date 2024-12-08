@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="AttackId" />
           </Key>
-          <Property Name="AttackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttackId" Type="int" Nullable="false" />
           <Property Name="AttackName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
@@ -74,7 +74,7 @@ warning 6002: The table/view 'PokemonBD.dbo.PokemonAttaks' does not have a prima
           <Key>
             <PropertyRef Name="PokemonId" />
           </Key>
-          <Property Name="PokemonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PokemonId" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="Weakness" Type="int" Nullable="false" />
@@ -104,7 +104,7 @@ warning 6002: The table/view 'PokemonBD.dbo.PokemonAttaks' does not have a prima
           <Key>
             <PropertyRef Name="TypeId" />
           </Key>
-          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
           <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="WeaknessId" Type="int" Nullable="false" />
         </EntityType>
@@ -425,7 +425,7 @@ warning 6002: The table/view 'PokemonBD.dbo.PokemonAttaks' does not have a prima
           <Key>
             <PropertyRef Name="AttackId" />
           </Key>
-          <Property Name="AttackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttackId" Type="Int32" Nullable="false" />
           <Property Name="AttackName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -472,7 +472,7 @@ warning 6002: The table/view 'PokemonBD.dbo.PokemonAttaks' does not have a prima
           <Key>
             <PropertyRef Name="PokemonId" />
           </Key>
-          <Property Name="PokemonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PokemonId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="Weakness" Type="Int32" Nullable="false" />
@@ -516,7 +516,7 @@ warning 6002: The table/view 'PokemonBD.dbo.PokemonAttaks' does not have a prima
           <Key>
             <PropertyRef Name="TypeId" />
           </Key>
-          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
           <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="WeaknessId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Attacks" Relationship="Self.FK_Attacks_Types" FromRole="Types" ToRole="Attacks" />
